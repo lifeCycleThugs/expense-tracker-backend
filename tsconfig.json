@@ -1,0 +1,24 @@
+{
+    "extends": "@tsconfig/node16/tsconfig.json",
+    "compilerOptions": {
+        "target": "es6",                               
+        "module": "commonjs",                        
+        "outDir": "./dist",                             
+        "rootDir": "./src",
+        "baseUrl": "./src",
+        "paths": {
+            "@modules/*": ["./modules/*"],
+            "@utils/*": ["./utils/*"],
+            "@middlewares/*": ["./middlewares/*"]
+        },    
+        "typeRoots": [
+            "./custom_typings",
+            "./node_modules/@types"
+        ],                      
+        "strict": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+    },
+    "include": ["src"],
+    "exclude": ["node_modules"]
+}

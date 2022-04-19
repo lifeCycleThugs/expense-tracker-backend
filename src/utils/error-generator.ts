@@ -1,8 +1,8 @@
-export class VirifiError {
-    status: number;
-    message: string;
-    constructor (status: number, message: string) {
+export class ErrorGenerator {
+    status: Number;
+    message: String
+    constructor(status: Number, message: String) {
         this.status = status;
-        this.message = message;
+        this.message = message
     }
 }

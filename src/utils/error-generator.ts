@@ -1,7 +1,7 @@
 export class ErrorGenerator {
-    status: Number;
-    message: String
-    constructor(status: Number, message: String) {
+    status: number;
+    message: string
+    constructor(status: number, message: string) {
         this.status = status;
         this.message = message
     }

@@ -1,8 +1,9 @@
 import express, { Request, Response  } from "express";
-const dotenv =  require('dotenv').config();
-const cors = require('cors');
-import { ErrorGenerator } from "./utils/index";
+import { config } from "dotenv";
+import cors from "cors";
+import './connections/mongodb'
 
+config();
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -11,7 +12,6 @@ app.listen(port, () => {
 })
 
 app.use(cors())
-
 
 app.get('/', (req: Request , res: Response) => {
     res.send('Api worked')

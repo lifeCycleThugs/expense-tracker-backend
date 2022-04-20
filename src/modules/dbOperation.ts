@@ -1,26 +1,29 @@
-const mongoose = require('mongoose');
+import mongoose, {Model} from "mongoose";
 import { ErrorGenerator } from "../utils/index";
-const findAll = async (schemaName:any, keysToPopulate?: [string]) => {
+const findAll = async (schemaName:Model<any>, keysToPopulate?: [string]) => {
     try {
         let result: any;
         if(keysToPopulate?.length){
-            result = await schemaName.find({}).populate(keysToPopulate.join(','))
+            result = await schemaName.find({}).populate(keysToPopulate.join(','));
         } 
         else {
-            result = await schemaName.find({})
+            result = await schemaName.find({});
         }
         return result
-
     } catch (error: any) {
-        return new ErrorGenerator(error.status, error.message);
+        throw new ErrorGenerator(500, error?.message);
     }
 }
 
-const createNew = async (schemaName: any, body: any) => {
+const createNew = async (schemaName: Model<any>, body: any) => {
     try {
-        const result = schemaName.create(body)
-        return  result
+        const result = await schemaName.create(body);
+        return result;
     } catch (error: any) {
-        return new ErrorGenerator(error.status, error.message);        
+        throw new ErrorGenerator(500, error.message);        
     }
+}
+
+export {
+    findAll, createNew
 }

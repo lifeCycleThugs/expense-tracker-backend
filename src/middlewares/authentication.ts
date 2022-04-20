@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { ErrorGenerator, JWT } from "../utils/index";
+import { ErrorGenerator } from "../utils/error-generator";
+import { JWT } from "../utils/jwt-operation";
 
 class AuthMiddleware {
     constructor(){}

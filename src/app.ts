@@ -1,4 +1,3 @@
-require('express-async-errors');
 import express, { Request, response, Response  } from "express";
 import { config } from "dotenv";
 import cors from "cors";

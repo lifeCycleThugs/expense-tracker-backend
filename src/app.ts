@@ -1,7 +1,10 @@
-import express, { Request, Response  } from "express";
+require('express-async-errors');
+import express, { Request, response, Response  } from "express";
 import { config } from "dotenv";
 import cors from "cors";
 import './connections/mongodb'
+import { authMiddleware } from "./middlewares/authentication";
+import { errorHandler } from "./middlewares/index";
 
 config();
 const app = express();
@@ -13,6 +16,8 @@ app.listen(port, () => {
 
 app.use(cors())
 
-app.get('/', (req: Request , res: Response) => {
+app.get('/', authMiddleware.authenticateJWT ,(req: Request , res: Response) => {
     res.send('Api worked')
 })
+
+app.use(errorHandler)

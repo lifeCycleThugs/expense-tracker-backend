@@ -2,12 +2,12 @@ import { Request, Response } from "express"
 import { Controller } from "./user.controller"
 
 let express = require('express')
-let router = express.Router()
+export const router = express.Router()
 
 router.route('/login')
     .post(async (req:Request, res:Response) => {
         try {
-            const result =await Controller.loginUser(req)
+            const result = await Controller.loginUser(req)
             return res.status(200).json(result)
         } catch (error) {
             // add Error Generator
@@ -24,5 +24,3 @@ router.route('/signup')
             
         }
     })
-
-module.exports= router

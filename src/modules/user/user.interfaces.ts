@@ -3,8 +3,8 @@ export interface Login  {
     password:string
 }
 export interface Signup {
-    name:string,
-    email:string,
-    phoneNumber:number,
-    passwordHash:string
+    firstName: string,
+    lastName: string,
+    email: string,
+    passwordHash: string
 }

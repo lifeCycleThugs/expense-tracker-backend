@@ -15,18 +15,21 @@ class UserController {
          }
     }
     signUpUser = async (req: Request) => {
-        req.body.passwordHash = bcrypt.hashSync(req.body.password, 5)
-        console.log(req.body.passwordHash);
-        
         try {
-            const data: Signup = {
-                name: req.body.name,
-                email: req.body.email,
-                passwordHash: req.body.passwordHash,
-                phoneNumber: req.body.phoneNumber
+            const { firstName, lastName, email, password } = req.body;
+            if (!firstName || !lastName || !email || !password) {
+                return { error: 'Missing parameters' };
             }
-            const result = await addUser(data)
-            return result
+            const passwordHash = bcrypt.hashSync(password, 5)
+            const data: Signup = {
+                firstName,
+                lastName,
+                email,
+                passwordHash,
+            }
+            const result = await addUser(data);
+            console.log('result', result);
+            return result;
         } catch (error) {
             
         }

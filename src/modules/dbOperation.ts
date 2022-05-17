@@ -15,9 +15,9 @@ const findAll = async (schemaName:Model<any>, keysToPopulate?: [string]) => {
     }
 }
 
-const createNew = async (schemaName: Model<any>, body: any) => {
+const createNew = async (schemaName: any, data: any) => {
     try {
-        const result = await schemaName.create(body);
+        const result = await schemaName.create(data);
         return result;
     } catch (error: any) {
         throw new ErrorGenerator(500, error.message);        

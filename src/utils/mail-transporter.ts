@@ -14,7 +14,7 @@ export class MailTransporter {
         this.html = html;
 
         const sendMail: any = {
-            from: `"Virifi" <${process.env.MAIL_EMAIL}>`,
+            from: `"Expense Tracker" <${process.env.MAIL_EMAIL}>`,
             to: `${this.email}`,
             subject: this.subject,
             html: this.html,
